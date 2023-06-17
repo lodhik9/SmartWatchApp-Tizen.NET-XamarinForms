@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)tizen.net.api5\5.0.0.14638\build\tizen50\Tizen.NET.API5.targets" Condition="Exists('$(NuGetPackageRoot)tizen.net.api5\5.0.0.14638\build\tizen50\Tizen.NET.API5.targets')" />
+    <Import Project="$(NuGetPackageRoot)tizen.net\10.0.0.17508\build\tizen40\Tizen.NET.targets" Condition="Exists('$(NuGetPackageRoot)tizen.net\10.0.0.17508\build\tizen40\Tizen.NET.targets')" />
+    <Import Project="$(NuGetPackageRoot)xamarin.forms\4.6.0.967\buildTransitive\Xamarin.Forms.targets" Condition="Exists('$(NuGetPackageRoot)xamarin.forms\4.6.0.967\buildTransitive\Xamarin.Forms.targets')" />
+    <Import Project="$(NuGetPackageRoot)tizen.wearable.circularui\1.5.0\build\Tizen.Wearable.CircularUI.targets" Condition="Exists('$(NuGetPackageRoot)tizen.wearable.circularui\1.5.0\build\Tizen.Wearable.CircularUI.targets')" />
+    <Import Project="$(NuGetPackageRoot)skiasharp\1.68.3\build\tizen40\SkiaSharp.targets" Condition="Exists('$(NuGetPackageRoot)skiasharp\1.68.3\build\tizen40\SkiaSharp.targets')" />
+  </ImportGroup>
+</Project>

@@ -1,0 +1,13 @@
+# csproj file path
+csproj_file: TizenDotNet4.csproj
+
+# files monitored for dirty/modified status
+files:
+  - TizenDotNet4.csproj
+  - TizenDotNet4.cs
+  - App.xaml
+  - App.xaml.cs
+  - MainPage.xaml
+  - MainPage.xaml.cs
+  - tizen-manifest.xml
+  - shared/res/TizenDotNet4.png

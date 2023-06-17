@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="TizenDotNet4.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TizenDotNet4"
+    xmlns:w="clr-namespace:Tizen.Wearable.CircularUI.Forms;assembly=Tizen.Wearable.CircularUI.Forms">
+    <Application.MainPage>
+        <NavigationPage x:Name="MainNavigation">
+            <x:Arguments>
+                <w:CirclePage
+                    x:Name="page"
+                    NavigationPage.HasNavigationBar="False"
+                    RotaryFocusObject="{x:Reference slider}">
+                    <w:CirclePage.Content>
+                        <StackLayout
+                            HorizontalOptions="Center"
+                            Orientation="Vertical"
+                            VerticalOptions="Center">
+                            <Label HorizontalTextAlignment="Center" Text="Welcome to Xamarin Forms!" />
+                            <Button Clicked="OnButtonClicked" Text="show toast" />
+                        </StackLayout>
+                    </w:CirclePage.Content>
+                    <w:CirclePage.CircleSurfaceItems>
+                        <w:CircleSliderSurfaceItem
+                            x:Name="slider"
+                            Increment="0.5"
+                            IsVisible="True"
+                            Maximum="15"
+                            Minimum="0"
+                            Value="3" />
+                    </w:CirclePage.CircleSurfaceItems>
+                </w:CirclePage>
+            </x:Arguments>
+        </NavigationPage>
+    </Application.MainPage>
+</Application>
+

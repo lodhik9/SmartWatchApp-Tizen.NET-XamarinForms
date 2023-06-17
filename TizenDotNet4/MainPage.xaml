@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sho="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+             x:Class="TizenDotNet4.MainPage">
+    <ContentPage.Content>
+
+        <AbsoluteLayout>
+            <Image AbsoluteLayout.LayoutBounds="-90, 0, 550, 360"
+                       Source="Logo.png" Opacity="0.5"  />
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.67*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid  Grid.Row="0" Padding="50,20,100,10" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.7*" />
+                        <ColumnDefinition Width="1.3*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center"  Source="home3.png"/>
+                    <sho:Shadows
+                Grid.Column="1"
+                CornerRadius="2"
+                Shades="{sho:SingleShade Offset='0,0',
+                                         Opacity=2,
+                                         Color=White}">
+                        <Frame
+                 Grid.Column="1" 
+                    Opacity="1"
+                CornerRadius="16"
+                            BorderColor="White"
+                        BackgroundColor="Transparent"
+                    HasShadow="True" >
+                            <StackLayout  Orientation="Vertical">
+                                <Label
+                                x:Name="stepLabel"
+                                Margin="0,-10,0,-5"
+                                FontAttributes="Bold"
+                                FontSize="8"
+                                HorizontalTextAlignment="Start"
+                                Text="Step 4"
+                                TextColor="White" />
+                                <BoxView
+                                Margin="-12,5,15,0"
+                                HeightRequest="1"
+                                Color="LightGray" />
+                                <Label
+                                Margin="0,-5,0,-5"
+                                FontAttributes="Bold"
+                                FontSize="5"
+                                HorizontalTextAlignment="Start"
+                                Text="Step and Gap measurement"
+                                TextColor="White" />
+                            </StackLayout>
+                        </Frame>
+                    </sho:Shadows>
+                </Grid>
+                <Grid  Grid.Row="1" Padding="0,0,0,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <ImageButton  Grid.Row="0" Grid.Column="0"   BorderColor="White" CornerRadius="28" Clicked="OnBackButtonClicked"   Source="leftArrow.png" />
+                    <sho:Shadows
+                Grid.Row="0" Grid.Column="1"
+                CornerRadius="2"
+                Shades="{sho:SingleShade Offset='0,0',
+                                         Opacity=1,
+                                         Color=White}">
+                        <Frame
+                 Grid.Row="0" Grid.Column="1"
+                BackgroundColor="Transparent"
+                            BorderColor="White"
+                   
+                    Opacity="1"
+                            HasShadow="True"
+                CornerRadius="16">
+                            <StackLayout  Orientation="Vertical">
+                                <Label
+                                x:Name="valueLabel"
+                                Margin="0,-5,0,-5"
+                                FontAttributes="Bold"
+                                FontSize="5"
+                                HorizontalTextAlignment="center"
+                                Text="Last measured value"
+                                TextColor="#FFFFFF" />
+                            </StackLayout>
+                        </Frame>
+                    </sho:Shadows>
+                    <ImageButton  Grid.Row="1" Grid.Column="1"  Source="tick.png" />
+                    <ImageButton  Grid.Row="0" Grid.Column="2"  Source="rightArrow.png" />
+                </Grid>
+            </Grid>
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>

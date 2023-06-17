@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TizenDotNet4.LandingPage">
+    <ContentPage.Content>
+
+        <AbsoluteLayout>
+            <Image AbsoluteLayout.LayoutBounds="-90, 0, 550, 360"
+                       Source="Logo.png" Opacity="0.5"  />
+            <Grid    Padding="10,0,0,0" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.67*" />
+                    <RowDefinition Height="0.67*" />
+                    <RowDefinition Height="1.4*" />
+                </Grid.RowDefinitions>
+
+                <Image Grid.Row="0" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center"  Source="home3.png"/>
+                <StackLayout  Grid.Row="1" Padding="20,0,10,0">
+                    <Label
+                       
+                                x:Name="titleLabel"
+                             
+                                FontAttributes="Bold"
+                                FontSize="6"
+                                HorizontalTextAlignment="Center"
+                                Text="Job list of inspection plans that have not been Finished"
+                                TextColor="White" />
+                </StackLayout>
+                <ListView x:Name="bulletList"
+                                Grid.Row="2" 
+                             Margin="0, -50, 0, 0"
+                              BackgroundColor="Transparent"
+                              VerticalOptions="FillAndExpand"
+                              HasUnevenRows="True"
+                              SeparatorVisibility="None"
+                              SelectedItem="{Binding SelectedBulletItem, Mode=TwoWay}"
+                               ItemSelected="OnItemSelected">
+                    <!--<ListView.Header>
+                        <StackLayout Orientation="Vertical" Padding="20,0,10,40">
+                            <Image HeightRequest="100" WidthRequest="100"
+                                   HorizontalOptions="Center" VerticalOptions="Center"
+                                   Source="home3.png" />
+                            <Label x:Name="titleLabel"
+                                   FontAttributes="Bold"
+                                   FontSize="8"
+                                   VerticalOptions="Center"
+                                   Text="Job list of inspection plans that have not been finished"
+                                   TextColor="White" />
+                        </StackLayout>
+                    </ListView.Header>-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="80,0,0,0" Orientation="Horizontal">
+                                    <Label Text="•"
+                                               FontSize="10"
+                                               TextColor="White"
+                                               VerticalOptions="Center" />
+                                    <Label Text="{Binding ItemText}"
+                                               FontSize="10"
+                                               TextColor="White"
+                                               VerticalOptions="Center" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>

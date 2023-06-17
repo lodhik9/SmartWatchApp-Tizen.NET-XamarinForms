@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://tizen.org/ns/packages" api-version="5" package="org.tizen.example.TizenDotNet4" version="1.0.0">
+	<profile name="wearable" />
+	<privileges>
+		<privilege>http://tizen.org/privilege/internet</privilege>
+		<privilege>http://tizen.org/privilege/network.get</privilege>
+		<privilege>http://tizen.org/privilege/network.set</privilege>
+		<privilege>http://tizen.org/privilege/network.profile</privilege>
+	</privileges>
+	<ui-application appid="org.tizen.example.TizenDotNet4"
+					exec="TizenDotNet4.dll"
+					type="dotnet"
+					multiple="false"
+					taskmanage="true"
+					nodisplay="false"
+					launch_mode="single">
+		<label>TizenDotNet4</label>
+		<icon>TizenDotNet4.png</icon>
+		<metadata key="http://tizen.org/metadata/prefer_dotnet_aot" value="true" />
+	</ui-application>
+</manifest>

@@ -1,0 +1,14 @@
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\bin\Debug\tizen50\TizenDotNet4.deps.json
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\bin\Debug\tizen50\TizenDotNet4.dll
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\bin\Debug\tizen50\TizenDotNet4.pdb
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\obj\Debug\tizen50\TizenDotNet4.csproj.AssemblyReference.cache
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\obj\Debug\tizen50\TizenDotNet4.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\obj\Debug\tizen50\App.xaml.g.cs
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\obj\Debug\tizen50\MainPage.xaml.g.cs
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\obj\Debug\tizen50\TizenDotNet4.AssemblyInfoInputs.cache
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\obj\Debug\tizen50\TizenDotNet4.AssemblyInfo.cs
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\obj\Debug\tizen50\TizenDotNet4.csproj.CoreCompileInputs.cache
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\obj\Debug\tizen50\XamlC.stamp
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\obj\Debug\tizen50\TizenDotNet4.dll
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\obj\Debug\tizen50\TizenDotNet4.pdb
+C:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\obj\Debug\tizen50\LandingPage.xaml.g.cs
