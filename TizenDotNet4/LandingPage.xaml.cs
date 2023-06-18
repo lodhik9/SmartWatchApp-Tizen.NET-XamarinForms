@@ -9,10 +9,15 @@ using Xamarin.Forms.Xaml;
 
 namespace TizenDotNet4
 {
+    /// <summary>
+    /// Represents the landing page of the application.
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LandingPage : ContentPage
     {
-
+        /// <summary>
+        /// Initializes a new instance of the LandingPage class.
+        /// </summary>
         public LandingPage()
         {
             InitializeComponent();
@@ -32,6 +37,11 @@ namespace TizenDotNet4
             SelectedBulletItem = bulletItems.Last();
         }
 
+        /// <summary>
+        /// Event handler for the item selected event of the ListView.
+        /// </summary>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event arguments.</param>
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             if (e.SelectedItem == null)
@@ -47,14 +57,22 @@ namespace TizenDotNet4
         }
 
         // Define the property for the selected item
+        /// <summary>
+        /// Gets or sets the selected bullet item.
+        /// </summary>
         public BulletItem SelectedBulletItem { get; set; }
     }
 
 
 
-    // Define a class for the bullet point list items
+    /// <summary>
+    /// Represents a bullet point list item.
+    /// </summary>
     public class BulletItem
     {
+        /// <summary>
+        /// Gets or sets the text of the bullet item.
+        /// </summary>
         public string ItemText { get; set; }
     }
 }

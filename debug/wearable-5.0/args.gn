@@ -1,0 +1,14 @@
+# Default Tizen profile for the build
+profile = "wearable"
+
+# Default Tizen version for the build
+api_version = "5.0"
+
+# Default build type [debug/ release/ test]
+build_type = "debug"
+
+# Build with debug info
+debug_build = true
+
+# Build with tests
+test_build = false

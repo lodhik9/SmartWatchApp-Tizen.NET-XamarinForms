@@ -1,0 +1,1 @@
+build.tz: ../../tizen_workspace.yaml ../../TizenDotNet4/tizen_dotnet_project.yaml

@@ -26,6 +26,9 @@ using TizenDotNet4;
 
 namespace TizenDotNet4
 {
+    /// <summary>
+    /// Represents the application class.
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class App : Application
     {
@@ -33,6 +36,9 @@ namespace TizenDotNet4
         public Document document;
         public string collectionName;
 
+        /// <summary>
+        /// Initializes a new instance of the App class.
+        /// </summary>
         public App()
         {
             InitializeComponent();
@@ -51,6 +57,12 @@ namespace TizenDotNet4
 #endif
         }
 
+        /// <summary>
+        /// Initializes ArangoDB connection. This is the working alternative of interacting with ArangoDB. It has its limitation
+        /// in .NET. Therefore the best practise is recommended, ie using of a API endpoint of backend NodeJS server which is
+        /// being used in this project.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation.</returns>
         private async void InitializeArangoDB()
         {
 
@@ -119,6 +131,10 @@ namespace TizenDotNet4
 
         }
 
+        /// <summary>
+        /// Creates a document in the ArangoDB.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation.</returns>
         public async Task CreateDocument()
         {
             var document = new Document { ProcessStep = "Step 7", MeasuredValue = "30" };
@@ -140,6 +156,11 @@ namespace TizenDotNet4
             }
         }
 
+        /// <summary>
+        /// Gets the documents asynchronously.
+        /// </summary>
+        /// <param name="collectionName">The name of ArangoDB's collection.</param>
+        /// <returns>A document.</returns>
         public async Task<T> GetDocumentAsyncWrap<T>(string collectionName)
         {
             const string documentKey = "8134499";
@@ -150,6 +171,11 @@ namespace TizenDotNet4
             return documents;
         }
 
+        /// <summary>
+        /// Gets the documents asynchronously.
+        /// </summary>
+        /// <param name="collectionName">The name of ArangoDB's collection.</param>
+        /// <returns>A document.</returns>
         public async Task<Document> GetDocument<T>(string collectionName)
         {
             // Retrieve the document from the collection
@@ -163,27 +189,32 @@ namespace TizenDotNet4
             }
             return null;
         }
-        public void OnButtonClicked(object sender, EventArgs e)
-        {
-            Toast.DisplayText("Toast popup", 3000);
-        }
 
 
-
+        /// <summary>
+        /// Called when the application starts.
+        /// </summary>
         protected override void OnStart()
         {
             // Handle when your app starts
         }
 
+        /// <summary>
+        /// Called when the application is put to sleep.
+        /// </summary>
         protected override void OnSleep()
         {
             // Handle when your app sleeps
         }
 
+        /// <summary>
+        /// Called when the application resumes from a sleeping state.
+        /// </summary>
         protected override void OnResume()
         {
             // Handle when your app resumes
         }
+
     }
 }
 

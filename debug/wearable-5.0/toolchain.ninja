@@ -1,0 +1,69 @@
+rule stamp
+  command = C:/Visual-Studio-2022/Tizensdk/tools/tizen-core/uutils touch ${out}
+  description = STAMP ${out}
+rule copy
+  command = cmd /c " (C:/Visual-Studio-2022/Tizensdk/tools/tizen-core/uutils rm -rf ${out} && C:/Visual-Studio-2022/Tizensdk/tools/tizen-core/uutils cp ${in} ${out}) "
+  description = COPY ${out}
+
+rule __TizenDotNet4_TizenDotNet4_csproj_build__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule
+  command = C:/Visual-Studio-2022/Tizensdk/tools/tizen-core/tz dotnet-build build --target-path C$:/Users/binis/source/repos/TizenDotNet4/TizenDotNet4/TizenDotNet4.csproj --build-tool "C$:\Program$ Files\dotnet\dotnet.exe" --configuration debug -t dotnet-cli --status-file C$:/Users/binis/source/repos/TizenDotNet4/debug/wearable-5.0/dotnet_build/status/TizenDotNet4_csproj_build -D -S
+  description = build csproj "C:/Users/binis/source/repos/TizenDotNet4/TizenDotNet4/TizenDotNet4.csproj" using "C:\Program Files\dotnet\dotnet.exe" : can be modified in tizen_workspace.yaml
+  restat = 1
+
+build dotnet_build/status/TizenDotNet4_csproj_build: __TizenDotNet4_TizenDotNet4_csproj_build__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule | dotnet_build/status/TizenDotNet4_status_check ../../TizenDotNet4/TizenDotNet4.csproj ../../TizenDotNet4/TizenDotNet4.cs ../../TizenDotNet4/App.xaml ../../TizenDotNet4/App.xaml.cs ../../TizenDotNet4/MainPage.xaml ../../TizenDotNet4/MainPage.xaml.cs ../../TizenDotNet4/tizen-manifest.xml ../../TizenDotNet4/shared/res/TizenDotNet4.png obj/TizenDotNet4/TizenDotNet4_status_check.stamp
+
+build obj/TizenDotNet4/TizenDotNet4_csproj_build.stamp: stamp dotnet_build/status/TizenDotNet4_csproj_build
+rule __TizenDotNet4_TizenDotNet4_status_check__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule
+  command = C:/Visual-Studio-2022/Tizensdk/tools/tizen-core/tz dotnet-build check --csproj-path C$:/Users/binis/source/repos/TizenDotNet4/TizenDotNet4/TizenDotNet4.csproj --configuration debug --status-file C$:/Users/binis/source/repos/TizenDotNet4/debug/wearable-5.0/dotnet_build/status/TizenDotNet4_status_check --name TizenDotNet4
+  description = Check outputfiles status of TizenDotNet4
+  restat = 1
+
+build dotnet_build/status/TizenDotNet4_status_check dotnet_build/status/TizenDotNet4_status_check_trigger: __TizenDotNet4_TizenDotNet4_status_check__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule
+
+build obj/TizenDotNet4/TizenDotNet4_status_check.stamp: stamp dotnet_build/status/TizenDotNet4_status_check dotnet_build/status/TizenDotNet4_status_check_trigger
+build obj/TizenDotNet4/all.stamp: stamp obj/TizenDotNet4/TizenDotNet4_csproj_build.stamp
+build obj/TizenDotNet4/hash.stamp: stamp
+build obj/TizenDotNet4/out.stamp: stamp obj/TizenDotNet4/TizenDotNet4_csproj_build.stamp
+build obj/build/build.stamp: stamp obj/TizenDotNet4/all.stamp
+build obj/build/hash.stamp: stamp obj/TizenDotNet4/hash.stamp
+rule __build_install__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule
+  command = C:/Visual-Studio-2022/Tizensdk/tools/tizen-core/tz sdb "install$ org.tizen.example.TizenDotNet4-1.0.0.tpk" -x -w dotnet -s install -p org.tizen.example.TizenDotNet4-1.0.0.tpk -i org.tizen.example.TizenDotNet4
+  description = INSTALL org.tizen.example.TizenDotNet4-1.0.0.tpk
+  restat = 1
+
+build install.org.tizen.example.TizenDotNet4-1.0.0.tpk: __build_install__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule | obj/build/pack.stamp
+
+build obj/build/install.stamp: stamp install.org.tizen.example.TizenDotNet4-1.0.0.tpk
+rule __build_pack__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule
+  command = C:/Visual-Studio-2022/Tizensdk/tools/tizen-core/tz sign-pack hybrid -d C$:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\bin\Debug\tizen50\org.tizen.example.TizenDotNet4-1.0.0.tpk -b C$:\Users\binis\source\repos\TizenDotNet4\TizenDotNet4\bin\Debug\tizen50\org.tizen.example.TizenDotNet4-1.0.0.tpk -f org.tizen.example.TizenDotNet4-1.0.0.tpk -c -p "C$:/Users/binis/OneDrive/Documents/Visual$ Studio$ 2022/Tizensdk-data/profile/profiles.xml" -s .
+  description = Repack the hybrid pkg file
+  restat = 1
+
+build org.tizen.example.TizenDotNet4-1.0.0.tpk: __build_pack__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule | obj/build/pack_dotnet.stamp
+
+build obj/build/pack.stamp: stamp org.tizen.example.TizenDotNet4-1.0.0.tpk
+build obj/build/pack_dotnet.stamp: stamp obj/build/build.stamp
+rule __build_run.org.tizen.example.TizenDotNet4__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule
+  command = C:/Visual-Studio-2022/Tizensdk/tools/tizen-core/tz sdb "launch$ -p$ org.tizen.example.TizenDotNet4$ -e$ org.tizen.example.TizenDotNet4$ -m$ run" -x -w dotnet -s run -i org.tizen.example.TizenDotNet4 -e org.tizen.example.TizenDotNet4 -P C$:\Users\binis\source\repos\TizenDotNet4 -a org.tizen.example.TizenDotNet4
+  description = RUN org.tizen.example.TizenDotNet4 in org.tizen.example.TizenDotNet4
+  restat = 1
+
+build launch.org.tizen.example.TizenDotNet4.org.tizen.example.TizenDotNet4: __build_run.org.tizen.example.TizenDotNet4__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule | obj/build/install.stamp
+
+build obj/build/run.org.tizen.example.TizenDotNet4.stamp: stamp launch.org.tizen.example.TizenDotNet4.org.tizen.example.TizenDotNet4
+rule __build_uninstall__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule
+  command = C:/Visual-Studio-2022/Tizensdk/tools/tizen-core/tz sdb "uninstall$ org.tizen.example.TizenDotNet4" -x -w dotnet -s uninstall -i org.tizen.example.TizenDotNet4
+  description = UNINSTALL org.tizen.example.TizenDotNet4
+  restat = 1
+
+build uninstall.org.tizen.example.TizenDotNet4: __build_uninstall__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule
+
+build obj/build/uninstall.stamp: stamp uninstall.org.tizen.example.TizenDotNet4
+rule __build_uninstall_process__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule
+  command = cmd.exe /c echo "The$ first$ project$ corresponding$ to$ the$ csproj/sln$ specified$ in$ working_folder$ in$ tizen_workspace.yaml$ will$ be$ uninstalled$ $:$ org.tizen.example.TizenDotNet4"
+  description = NOTIFY :uninstall org.tizen.example.TizenDotNet4
+  restat = 1
+
+build uninstall_processorg.tizen.example.TizenDotNet4: __build_uninstall_process__C__Visual-Studio-2022_Tizensdk_tools_tizen-core_dotnet_toolchains_dotnet_builder__rule
+
+build obj/build/uninstall_process.stamp: stamp uninstall_processorg.tizen.example.TizenDotNet4

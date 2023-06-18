@@ -1,0 +1,2 @@
+# Skip dotnet/msbuild  for dotnet projects
+skip_dotnet_build: true

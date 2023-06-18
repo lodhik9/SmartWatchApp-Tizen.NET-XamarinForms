@@ -1,0 +1,60 @@
+ninja_required_version = 1.7.2
+
+rule gn
+  command = ../../../../../../../Visual-Studio-2022/Tizensdk/tools/tizen-core/tgn.exe --root=../.. -q --c gen .
+  description = Regenerating ninja files
+
+rule tz_gn
+  command = C:/Visual-Studio-2022/Tizensdk/tools/tizen-core/tz.exe gen .
+  description = Regenerating build files
+
+build build.tz: tz_gn
+  generator = 1
+  depfile = build.tz.d
+
+build build.ninja: gn | build.tz
+  generator = 1
+  depfile = build.ninja.d
+
+subninja toolchain.ninja
+
+build build: phony obj/build/build.stamp
+build TizenDotNet4_csproj_build: phony obj/TizenDotNet4/TizenDotNet4_csproj_build.stamp
+build TizenDotNet4_status_check: phony obj/TizenDotNet4/TizenDotNet4_status_check.stamp
+build install: phony obj/build/install.stamp
+build out: phony obj/TizenDotNet4/out.stamp
+build pack: phony obj/build/pack.stamp
+build pack_dotnet: phony obj/build/pack_dotnet.stamp
+build run.org.tizen.example.TizenDotNet4: phony obj/build/run.org.tizen.example.TizenDotNet4.stamp
+build uninstall: phony obj/build/uninstall.stamp
+build uninstall_process: phony obj/build/uninstall_process.stamp
+build TizenDotNet4$:TizenDotNet4_csproj_build: phony obj/TizenDotNet4/TizenDotNet4_csproj_build.stamp
+build TizenDotNet4$:TizenDotNet4_status_check: phony obj/TizenDotNet4/TizenDotNet4_status_check.stamp
+build TizenDotNet4$:all: phony obj/TizenDotNet4/all.stamp
+build TizenDotNet4$:hash: phony obj/TizenDotNet4/hash.stamp
+build TizenDotNet4$:out: phony obj/TizenDotNet4/out.stamp
+build build$:build: phony obj/build/build.stamp
+build build$:hash: phony obj/build/hash.stamp
+build build$:install: phony obj/build/install.stamp
+build build$:pack: phony obj/build/pack.stamp
+build build$:pack_dotnet: phony obj/build/pack_dotnet.stamp
+build build$:run.org.tizen.example.TizenDotNet4: phony obj/build/run.org.tizen.example.TizenDotNet4.stamp
+build build$:uninstall: phony obj/build/uninstall.stamp
+build build$:uninstall_process: phony obj/build/uninstall_process.stamp
+
+build all: phony $
+    obj/TizenDotNet4/TizenDotNet4_csproj_build.stamp $
+    obj/TizenDotNet4/TizenDotNet4_status_check.stamp $
+    obj/TizenDotNet4/all.stamp $
+    obj/TizenDotNet4/hash.stamp $
+    obj/TizenDotNet4/out.stamp $
+    obj/build/build.stamp $
+    obj/build/hash.stamp $
+    obj/build/install.stamp $
+    obj/build/pack.stamp $
+    obj/build/pack_dotnet.stamp $
+    obj/build/run.org.tizen.example.TizenDotNet4.stamp $
+    obj/build/uninstall.stamp $
+    obj/build/uninstall_process.stamp
+
+default all

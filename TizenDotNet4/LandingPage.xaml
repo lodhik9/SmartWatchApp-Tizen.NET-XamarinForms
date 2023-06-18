@@ -4,9 +4,12 @@
              x:Class="TizenDotNet4.LandingPage">
     <ContentPage.Content>
 
+        <!-- AbsoluteLayout to position elements: for background image -->
         <AbsoluteLayout>
+            <!-- Background image -->
             <Image AbsoluteLayout.LayoutBounds="-90, 0, 550, 360"
                        Source="Logo.png" Opacity="0.5"  />
+            <!-- Grid for layout -->
             <Grid    Padding="10,0,0,0" >
 
                 <Grid.RowDefinitions>
@@ -15,18 +18,19 @@
                     <RowDefinition Height="1.4*" />
                 </Grid.RowDefinitions>
 
+                <!-- Image for home icon -->
                 <Image Grid.Row="0" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" VerticalOptions="Center"  Source="home3.png"/>
-                <StackLayout  Grid.Row="1" Padding="20,0,10,0">
+                <!-- StackLayout for title label -->
+                <StackLayout  Grid.Row="1" Padding="20,0,30,0">
                     <Label
-                       
                                 x:Name="titleLabel"
-                             
                                 FontAttributes="Bold"
                                 FontSize="6"
                                 HorizontalTextAlignment="Center"
                                 Text="Job list of inspection plans that have not been Finished"
                                 TextColor="White" />
                 </StackLayout>
+                <!-- ListView for bullet points -->
                 <ListView x:Name="bulletList"
                                 Grid.Row="2" 
                              Margin="0, -50, 0, 0"
@@ -36,19 +40,7 @@
                               SeparatorVisibility="None"
                               SelectedItem="{Binding SelectedBulletItem, Mode=TwoWay}"
                                ItemSelected="OnItemSelected">
-                    <!--<ListView.Header>
-                        <StackLayout Orientation="Vertical" Padding="20,0,10,40">
-                            <Image HeightRequest="100" WidthRequest="100"
-                                   HorizontalOptions="Center" VerticalOptions="Center"
-                                   Source="home3.png" />
-                            <Label x:Name="titleLabel"
-                                   FontAttributes="Bold"
-                                   FontSize="8"
-                                   VerticalOptions="Center"
-                                   Text="Job list of inspection plans that have not been finished"
-                                   TextColor="White" />
-                        </StackLayout>
-                    </ListView.Header>-->
+                    <!-- DataTemplate for each item -->
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -66,9 +58,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
             </Grid>
         </AbsoluteLayout>
-
     </ContentPage.Content>
 </ContentPage>

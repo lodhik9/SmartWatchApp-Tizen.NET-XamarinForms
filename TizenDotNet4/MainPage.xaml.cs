@@ -17,16 +17,25 @@ using Tizen.NUI.BaseComponents;
 
 namespace TizenDotNet4
 {
+    /// <summary>
+    /// Represents the main page of the application.
+    /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
-
+        // <summary>
+        /// Initializes a new instance of the MainPage class.
+        /// </summary>
         public MainPage()
         {
             InitializeComponent();
             //ConnectAndPublish();
             //ConnectAndSubscribe();
         }
+
+        // <summary>
+        /// Event handler for the appearing event of the page.
+        /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -34,7 +43,42 @@ namespace TizenDotNet4
             FetchDataFromAPI(null, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Fetches data from the API.
+        /// </summary>
+        /// <param name="sender">The sender object.</param>
+        /// <param name="e">The event arguments.</param>
+        private async void FetchDataFromAPI(object sender, EventArgs e)
+        {
+            // Call the GetDocumentsAsync method to retrieve documents from ArangoDB
+            var documents = await GetDocumentsAsync();
+            Console.WriteLine(documents);
 
+            // Process the retrieved documents as needed
+            if (documents != null && documents.Any())
+            {
+                // Get the first document
+                var firstDocument = documents.First();
+                Console.WriteLine(firstDocument.ToString());
+
+                // Access the "value" property of the document
+                if (firstDocument.ProcessStep != "")
+                {
+                    var step = firstDocument.ProcessStep;
+                    var value = firstDocument.MeasuredValue;
+
+                    // Update the label text with the retrieved value
+                    stepLabel.Text = step;
+                    valueLabel.Text = value;
+                    Console.WriteLine(value.ToString());
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets the documents asynchronously.
+        /// </summary>
+        /// <returns>A list of documents.</returns>
         private async Task<List<Document>> GetDocumentsAsync()
         {
             try
@@ -72,6 +116,10 @@ namespace TizenDotNet4
             return null;
         }
 
+        /// <summary>
+        /// Connects and subscribes to an MQTT broker.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation.</returns>
         public async Task ConnectAndSubscribe()
         {
             try
@@ -109,6 +157,10 @@ namespace TizenDotNet4
             }
         }
 
+        // <summary>
+        /// Connects and Publish to an MQTT broker.
+        /// </summary>
+        /// <returns>A task representing the asynchronous operation.</returns>
         public static async Task ConnectAndPublish()
         {
             /*
@@ -167,36 +219,6 @@ namespace TizenDotNet4
             {
                 await client.PublishAsync(message);
             }
-        }
-
-        private async void FetchDataFromAPI(object sender, EventArgs e)
-        {
-            // Call the GetDocumentsAsync method to retrieve documents from ArangoDB
-            var documents = await GetDocumentsAsync();
-            Console.WriteLine(documents);
-
-            // Process the retrieved documents as needed
-            if (documents != null && documents.Any())
-            {
-                // Get the first document
-                var firstDocument = documents.First();
-                Console.WriteLine(firstDocument.ToString());
-
-                // Access the "value" property of the document
-                if (firstDocument.ProcessStep != "")
-                {
-                    var step = firstDocument.ProcessStep;
-                    var value = firstDocument.MeasuredValue;
-
-                    // Update the label text with the retrieved value
-                    stepLabel.Text = step;
-                    valueLabel.Text = value;
-                    Console.WriteLine(value.ToString());
-                }
-            }
-
-
-
         }
 
         private void OnBackButtonClicked(object sender, EventArgs e)
